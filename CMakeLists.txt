@@ -27,8 +27,8 @@ set(USE_GLUT OFF)
 # Build Release by default
 set(CMAKE_BUILD_TYPE Release CACHE STRING "Build Type")
 
-# Default is 64*1024*1024 = 64MB
-set(TOTAL_MEMORY 67108864 CACHE STRING "Total Memory")
+# Default is 128*1024*1024 = 128MB
+set(TOTAL_MEMORY 134217728 CACHE STRING "Total Memory")
 
 # Enable for resizable heap, with some amount of slowness
 set(ALLOW_MEMORY_GROWTH 0 CACHE STRING "Allow Memory Growth")
@@ -38,8 +38,9 @@ set(EMCC_ARGS
   --llvm-lto 1
   --post-js glue.js
   --post-js ${AMMO_ONLOAD_FILE}
-  -gsource-map
-  -g3
+  -O3
+#  -gsource-map
+#  -g3
   -s ALLOW_MEMORY_GROWTH=${ALLOW_MEMORY_GROWTH}
   -s ALLOW_TABLE_GROWTH=1
   -s EXPORTED_FUNCTIONS=["_malloc"]
